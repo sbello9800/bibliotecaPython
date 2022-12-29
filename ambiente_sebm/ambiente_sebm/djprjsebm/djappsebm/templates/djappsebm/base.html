@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock titulo %}</title>
+    
+</head>
+{% load static %}
+<div>
+    <div class="header">
+        <div class="logo">
+            <a href="{% url 'index' %}"><img src="{% static 'djappsebm/images/libros.png' %}"></a>
+        </div>
+        <div class="_btnopen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="_top">
+        <div class="_sombra"></div>
+        <div class="_menu">
+            <div class="_btncerrar">X</div>
+            <ul><div style="height : 45px;">
+                <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'addCliente_sbm' %}">Insertar</a>
+                    <a href="{% url 'listar_clientes_sebm' %}">Listar</a>
+                </div><a href="">Cliente</a></li>
+                </div>
+                <div style="height : 45px;">
+                <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'Insertar_autor_sebm' %}">Insertar</a>
+                    <a href="{% url 'Listar_autor_sebm' %}">Listar</a>
+                </div><a href="">Autores</a></li></div>
+                <div style="height : 45px;">
+                    <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'addUsuario_sbm' %}">Insertar</a>
+                    <a href="{% url 'listar_usuarios_sebm' %}">Listar</a>
+                </div><a href="">Usuario</a></li>
+                </div>
+                <div style="height : 45px;">
+                    <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'addLibro_sbm' %}">Insertar</a>
+                    <a href="{% url 'listar_libros_sebm' %}">Listar</a>
+                </div><a href="">Libro</a></li>
+                </div>
+                <div style="height : 45px;">
+                <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'Insertar_autor_sebm' %}">Insertar</a>
+                    <a href="{% url 'Listar_autor_sebm' %}">Listar</a>
+                </div><a href="">Autor</a></li>
+                </div>
+                <div style="height : 45px;">
+                <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'addCategoria_sbm' %}">Insertar</a>
+                    <a href="{% url 'listar_categoria_sebm' %}">Listar</a>
+                </div><a href="">Categoria</a></li>
+                </div>
+                <div style="height : 45px;">
+                <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'pedidoCliente' %}">Insertar</a>
+                    <a href="{% url 'listar_PedidoCliente' %}">Listar</a>
+                </div><a href="">Pedido cliente</a></li></div>
+                    <div style="height : 45px;">
+                    <li class="dropdown"><div class="dropdown-content">
+                    <a href="{% url 'insertar_libro_por_autor' %}">Insertar</a>
+                    <a href="{% url 'listar_libro_por_autor' %}">Listar</a>
+                </div><a href="">Libro por autor</a></li></div>
+                <li><a href="{% url 'cerrar_sesion_sebm' %}">Cerrar</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="contenido">
+    <body>
+        {% block cuerpo %}
+        
+    
+    
+    
+        
+        {% endblock cuerpo %} 
+        <link rel="stylesheet" href="{% static 'djappsebm\css\navbar.css' %}">
+        <script type="text/javascript" src="{% static 'djappsebm/js/navbar.js' %}"></script>
+    </body>
+</div>
+</html>

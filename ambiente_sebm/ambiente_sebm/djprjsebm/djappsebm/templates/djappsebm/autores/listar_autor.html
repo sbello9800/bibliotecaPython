@@ -1,0 +1,48 @@
+{% extends  'djappsebm/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<div>
+    <H1>Autor</H1>
+<br>
+<button class="btn"><a href="{% url 'Insertar_autor_sebm' %}">Agregar autor</a></button>
+
+<br>
+<br>
+<table>
+    
+    <thead>
+        
+        <tr>
+            <td>Nombres</td>
+            <td>Apellidos</td>
+            <td>Estado</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {%for autor in object_list %}
+        <tr>
+            <td>{{autor.nombres}}</td>
+            <td>{{autor.apellidos}}</td>
+            <td>{{autor.estado}}</td>
+            <td>
+                <a href="{% url 'Editar_autor_sebm' autor.id_autor %}">Editar</a>
+            <br><br>
+                <a href="{% url 'Eliminar_autor_sebm' autor.id_autor %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% else %}
+        <h1>No hay registro de autor</h1>
+        {% endif %}
+    </tbody>
+</table>
+</div>
+
+<link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+{% endblock cuerpo %}

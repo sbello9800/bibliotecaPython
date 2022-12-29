@@ -1,0 +1,59 @@
+
+{% extends 'djappsebm/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+<H1>Pedido clientes</H1>
+
+<button class="btn"><a href="{% url 'pedidoCliente' %}">Agregar clientes</a></button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id pedido</td>
+            <td>Numero pedido</td>
+            <td>Id cliente</td>
+            <td>Isbn</td>
+            <td>Fecha pedido</td>
+            <td>cantidad</td>
+            <td>subtotal</td>
+            <td>estado</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {%for pedido in object_list %}
+        <tr>
+            <td>{{pedido.id_pedido}}</td>
+            <td>{{pedido.nro_pedido}}</td>
+            <td>{{pedido.id_cliente}}</td>
+            <td>{{pedido.isbn}}</td>
+            <td>{{pedido.fecha_pedido}}</td>
+            <td>{{pedido.cantidad}}</td>
+            <td>{{pedido.subtotal}}</td>
+            <td>{{pedido.estado}}</td>
+            <td>
+                <a href="{% url 'editar_pedido_clientes' pedido.id_pedido %}"><img src="./../../../static/images/editar.png" alt="" width="32"></a>
+            </td>
+            <td>
+                <a href="{% url 'eliminar_PedidoCliente' pedido.id_pedido %}"><img src="./../../../static/images/eliminar.png" alt="" width="32"></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay registro de Pedidos para clientes</h1>
+        {% endif %}
+    </tbody>
+</table>
+
+<br>
+
+<CENTER>
+<button class="btn"><a href="{% url 'pedidoCliente' %}">Agregar Pedido Cliente</a></button>
+
+<button class="btn"><a href="{% url 'reporte_pedidoCliente'  %}">Reporte</a></button>
+</CENTER>
+
+<link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+{% endblock cuerpo %}

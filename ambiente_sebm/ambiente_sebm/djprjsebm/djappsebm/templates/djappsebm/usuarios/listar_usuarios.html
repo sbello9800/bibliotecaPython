@@ -1,0 +1,35 @@
+{% extends  'djappsebm/base.html' %}
+{% block cuerpo %}
+{% load static %}
+<table class="">
+    <thead>
+        <tr>
+            <td>ID_cliente</td>
+            <td>Usuario</td>
+            <td>Clave</td>
+            <td>Clave</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for usuario in object_list %}
+        <tr>
+            <td>{{usuario.id_cliente}}</td>
+            <td>{{usuario.usuario}}</td>
+            <td>{{usuario.clave}}</td>
+            <td>
+                <a href="{% url 'editUsuario_sebm' usuario.id_usuario %}">Editar</a>
+            <br><br>
+                <a href="{% url 'eliminar_usuario_sebm' usuario.id_usuario %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% else %}
+        <h1>No hay registro de clientes</h1>
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock cuerpo %}

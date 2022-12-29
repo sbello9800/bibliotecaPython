@@ -1,0 +1,46 @@
+{% extends  'djappsebm/base.html' %}
+{% block cuerpo %}
+{% load static %}
+<H1>Libros</H1>
+
+<button class="btn"><a href="{% url 'addLibro_sbm' %}">Agregar libros</a></button>
+<table class="">
+    <thead>
+        <tr>
+            <td>Titulo</td>
+            <td>Fecha_publicacion</td>
+            <td>Categoria</td>
+            <td>Precio</td>
+            <td>Portada</td>
+            <td>Cantidad</td>
+            <td>Estado</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for libros in object_list %}
+        <tr>
+            <td>{{libros.titulo}}</td>
+            <td>{{libros.fecha_pub}}</td>
+            <td>{{libros.categoria}}</td>
+            <td>{{libros.precio}}</td>
+            <td><img  src="/media/{{libros.portada}}" width="50"  alt=""></td>
+            <td>{{libros.cantidad_stock}}</td>
+            <td>{{libros.estado}}</td>
+            <td>
+                <a href="{% url 'Libro_update_sebm' libros.isbn %}">Editar</a>
+            <br><br>
+                <a href="{% url 'Eliminar_libro_sebm' libros.isbn %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% else %}
+        <h1>No hay registro de libros</h1>
+        {% endif %}
+    </tbody>
+</table>
+<link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+{% endblock cuerpo %}

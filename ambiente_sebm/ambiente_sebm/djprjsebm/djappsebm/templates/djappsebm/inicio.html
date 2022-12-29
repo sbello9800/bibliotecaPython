@@ -1,0 +1,41 @@
+
+
+
+{% block cuerpo %}
+    {% load static %}
+
+    {% if user.is_authenticated %}
+    <br>
+    <center>
+    <button class="btn"><a href="{% url 'inicio_sebm2' %}">Ir a inicio</a></button>
+    <br>
+<div class="cont">
+    <br>
+<input type="radio" name="position" checked />
+<input type="radio" name="position" />
+<input type="radio" name="position" />
+<input type="radio" name="position" />
+<input type="radio" name="position" />
+<main id="carousel">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <main>
+    </div>
+    
+    </center>
+    {% else %}
+    
+    {% endif %}
+
+
+    <link rel="stylesheet" href="{% static 'djappsebm\css\carrusel.css' %}">
+    <link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+    <script type="text/javascript" src="{% static 'djappsebm\js\carrusel.js' %}"></script>
+
+
+{% endblock cuerpo %}
+
+

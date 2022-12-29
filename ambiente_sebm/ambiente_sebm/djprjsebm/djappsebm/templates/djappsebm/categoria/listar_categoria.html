@@ -1,0 +1,43 @@
+{% extends  'djappsebm/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+
+<H1>Categorias</H1>
+
+<button class="btn"><a href="{% url 'addCategoria_sbm' %}">Agregar categoria</a></button>
+
+
+<table>
+    
+    <thead>
+        
+        <tr>
+            <td>Categoria</td>
+            <td>Estado</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {%for categoria in object_list %}
+        <tr>
+            <td>{{categoria.categoria}}</td>
+            <td>{{categoria.estado}}</td>
+            <td>
+                <a href="{% url 'categorias_editar' categoria.id_categoria %}">Editar</a>
+            <br><br>
+                <a href="{% url 'Categoria_eliminar_sebm' categoria.id_categoria %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% else %}
+        <h1>No hay registro de clientes</h1>
+        {% endif %}
+    </tbody>
+</table>
+<link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+{% endblock cuerpo %}

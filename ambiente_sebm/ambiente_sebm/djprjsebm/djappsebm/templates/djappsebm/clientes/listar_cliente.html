@@ -1,0 +1,48 @@
+{% extends  'djappsebm/base.html' %}
+{% block cuerpo %}
+{% load static %}
+
+<H1>Clientes</H1>
+
+<button class="btn"><a href="{% url 'addCliente_sbm' %}">Agregar clientes</a></button>
+
+<table class="">
+    <thead>
+        <tr>
+            <td>identificacion</td>
+            <td>nombres</td>
+            <td>apellidos</td>
+            <td>telefono</td>
+            <td>direccion</td>
+            <td>correo_electronico</td>
+            <td>estado</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for clientes in object_list %}
+        <tr>
+            <td>{{clientes.identificacion}}</td>
+            <td>{{clientes.nombres}}</td>
+            <td>{{clientes.apellidos}}</td>
+            <td>{{clientes.telefono}}</td>
+            <td>{{clientes.direccion}}</td>
+            <td>{{clientes.correo_electronico}}</td>
+            <td>{{clientes.estado}}</td>
+            <td>
+                <a href="{% url 'editClient_sebm' clientes.id_cliente %}">Editar</a>
+            <br><br>
+                <a href="{% url 'eliminar_cliente_sebm' clientes.id_cliente %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% else %}
+        <h1>No hay registro de clientes</h1>
+        {% endif %}
+    </tbody>
+</table>
+<link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+{% endblock cuerpo %}

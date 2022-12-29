@@ -1,0 +1,37 @@
+
+{% block titulo %}LOGIN{% endblock titulo %}
+
+{% block cuerpo %}
+    {% load static %}
+    {% if user.is_authenticated %}
+        
+    <center> <h1 style="color: #c2996b;">Bienvenido,  {{ user.username }}  </h1>
+        <div>
+        <img src="">
+        </div>  
+    
+    </center>
+    {% else %}
+    
+    <form id="loginform" action="{% url 'inicio_sesion_sebm' %}" method="post" class="form">
+        
+        <h2>Login</h2>
+        
+        <br>
+        {% csrf_token %}
+        <input id="username" type="text" name="usuario" placeholder="Usuario" required>
+        <br><br>
+        <input id="password" type="password" placeholder="Contraseña" name="password" required>
+        <br><br>
+        
+        <button class="btn" type="submit">Iniciar Sesión</button>
+        
+    </form>
+    {% endif %} 
+
+
+    
+    <link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+
+
+{% endblock cuerpo %}

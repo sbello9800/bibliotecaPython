@@ -1,0 +1,20 @@
+{% extends  'djappsebm/base.html' %}
+
+
+{% block cuerpo %}
+{% load static %}
+<div class="containerForm">
+    <center>
+    <form method="post" class="formCliente" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit" class="btn">Guardar</button>
+    </form>
+    </center>
+</div>
+
+<link rel="stylesheet" href="{% static 'djappsebm\css\estilos.css' %}">
+
+{% endblock cuerpo %}
+

@@ -1,0 +1,44 @@
+{% extends 'djappsebm/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+<center>
+    <H1>Clientes</H1>
+
+<button class="btn"><a href="{% url 'insertar_libro_por_autor' %}">Agregar libro por autor</a></button>
+
+<div class="container">
+<table>
+    <thead>
+        <tr>
+            <td>id_autor</td>
+            <td>isbn</td>
+            <td>estado</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {%for libros_por_autor in object_list %}
+        <tr>
+            <td>{{libros_por_autor.id_autor}}</td>
+            <td>{{libros_por_autor.isbn}}</td>
+            <td>{{libros_por_autor.estado}}</td>
+            <td>
+                <a href="{% url 'libroAutor_editar' libros_por_autor.id_autor %}"><img src="{% static 'djapphapp/images/editar.png' %}" width="32" ></a>
+                <a href="{% url 'eliminar_libroAutor' libros_por_autor.id_autor %}"><img src="{% static 'djapphapp/images/eliminar.png' %}" width="42" ></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay registro de libros por autor</h1>
+        {% endif %}
+    </tbody>
+</table>
+</div>
+<button><a href="{% url 'libroAutor' %}">Agregar Libro por autor</a></button>
+<button><a href="{% url 'reporte_libroAutor'  %}">Reporte</a></button>
+</center>
+
+
+{% endblock cuerpo %}
